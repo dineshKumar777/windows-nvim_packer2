@@ -107,7 +107,7 @@ _G.packer_plugins = {
     url = "https://github.com/mhartington/formatter.nvim"
   },
   ["hop.nvim"] = {
-    config = { "\27LJ\2\n‰\3\0\0\b\0\17\00046\0\0\0009\0\1\0009\0\2\0005\1\3\0\18\2\0\0'\4\4\0'\5\5\0'\6\6\0005\a\a\0B\2\5\1\18\2\0\0'\4\4\0'\5\b\0'\6\t\0\18\a\1\0B\2\5\1\18\2\0\0'\4\n\0'\5\b\0'\6\t\0\18\a\1\0B\2\5\1\18\2\0\0'\4\v\0'\5\b\0'\6\t\0\18\a\1\0B\2\5\1\18\2\0\0'\4\4\0'\5\f\0'\6\r\0\18\a\1\0B\2\5\1\18\2\0\0'\4\n\0'\5\f\0'\6\r\0\18\a\1\0B\2\5\1\18\2\0\0'\4\v\0'\5\f\0'\6\r\0\18\a\1\0B\2\5\0016\2\14\0'\4\15\0B\2\2\0029\2\16\2B\2\1\1K\0\1\0\nsetup\bhop\frequire+<cmd>lua require'hop'.hint_lines()<cr>\asl\6o\6x+<cmd>lua require'hop'.hint_words()<cr>\asw\1\0\1\fnoremap\1\n<Nop>\6s\6n\1\0\3\texpr\1\fnoremap\2\vsilent\1\20nvim_set_keymap\bapi\bvim\0" },
+    config = { "\27LJ\2\n‰\3\0\0\b\0\17\00046\0\0\0009\0\1\0009\0\2\0005\1\3\0\18\2\0\0'\4\4\0'\5\5\0'\6\6\0005\a\a\0B\2\5\1\18\2\0\0'\4\4\0'\5\b\0'\6\t\0\18\a\1\0B\2\5\1\18\2\0\0'\4\n\0'\5\b\0'\6\t\0\18\a\1\0B\2\5\1\18\2\0\0'\4\v\0'\5\b\0'\6\t\0\18\a\1\0B\2\5\1\18\2\0\0'\4\4\0'\5\f\0'\6\r\0\18\a\1\0B\2\5\1\18\2\0\0'\4\n\0'\5\f\0'\6\r\0\18\a\1\0B\2\5\1\18\2\0\0'\4\v\0'\5\f\0'\6\r\0\18\a\1\0B\2\5\0016\2\14\0'\4\15\0B\2\2\0029\2\16\2B\2\1\1K\0\1\0\nsetup\bhop\frequire+<cmd>lua require'hop'.hint_lines()<cr>\asl\6o\6x+<cmd>lua require'hop'.hint_words()<cr>\asw\1\0\1\fnoremap\1\n<Nop>\6s\6n\1\0\3\vsilent\1\texpr\1\fnoremap\2\20nvim_set_keymap\bapi\bvim\0" },
     keys = { { "", "s" } },
     loaded = false,
     needs_bufread = false,
@@ -144,6 +144,14 @@ _G.packer_plugins = {
     only_cond = false,
     path = "C:\\Users\\vdinesh\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\nvim-tree.lua",
     url = "https://github.com/kyazdani42/nvim-tree.lua"
+  },
+  ["nvim-treesitter"] = {
+    config = { "\27LJ\2\nì\1\0\0\4\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\6\0=\3\a\0025\3\b\0=\3\t\2B\0\2\1K\0\1\0\vindent\1\0\1\venable\2\14highlight\1\0\2\venable\2\21use_languagetree\2\21ensure_installed\1\0\0\1\v\0\0\blua\vpython\6c\tbash\15javascript\15typescript\btsx\thtml\bcss\tjson\nsetup\28nvim-treesitter.configs\frequire\0" },
+    loaded = false,
+    needs_bufread = true,
+    only_cond = false,
+    path = "C:\\Users\\vdinesh\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\nvim-treesitter",
+    url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
   ["nvim-web-devicons"] = {
     loaded = true,
@@ -185,19 +193,19 @@ time([[Config for catppuccin]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file NvimTreeFocus lua require("packer.load")({'nvim-tree.lua'}, { cmd = "NvimTreeFocus", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file ToggleTermCloseAll lua require("packer.load")({'toggleterm.nvim'}, { cmd = "ToggleTermCloseAll", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file ToggleTerm lua require("packer.load")({'toggleterm.nvim'}, { cmd = "ToggleTerm", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file ToggleTermOpenAll lua require("packer.load")({'toggleterm.nvim'}, { cmd = "ToggleTermOpenAll", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file NvimTreeToggle lua require("packer.load")({'nvim-tree.lua'}, { cmd = "NvimTreeToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file NvimTreeFocus lua require("packer.load")({'nvim-tree.lua'}, { cmd = "NvimTreeFocus", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 time([[Defining lazy-load commands]], false)
 
 -- Keymap lazy-loads
 time([[Defining lazy-load keymaps]], true)
-vim.cmd [[noremap <silent> <c-t> <cmd>lua require("packer.load")({'toggleterm.nvim'}, { keys = "<lt>c-t>", prefix = "" }, _G.packer_plugins)<cr>]]
-vim.cmd [[noremap <silent> g <cmd>lua require("packer.load")({'Comment.nvim'}, { keys = "g", prefix = "" }, _G.packer_plugins)<cr>]]
 vim.cmd [[noremap <silent> s <cmd>lua require("packer.load")({'hop.nvim'}, { keys = "s", prefix = "" }, _G.packer_plugins)<cr>]]
 vim.cmd [[noremap <silent> f <cmd>lua require("packer.load")({'clever-f.vim'}, { keys = "f", prefix = "" }, _G.packer_plugins)<cr>]]
+vim.cmd [[noremap <silent> g <cmd>lua require("packer.load")({'Comment.nvim'}, { keys = "g", prefix = "" }, _G.packer_plugins)<cr>]]
+vim.cmd [[noremap <silent> <c-t> <cmd>lua require("packer.load")({'toggleterm.nvim'}, { keys = "<lt>c-t>", prefix = "" }, _G.packer_plugins)<cr>]]
 time([[Defining lazy-load keymaps]], false)
 
 vim.cmd [[augroup packer_load_aucmds]]
@@ -206,7 +214,7 @@ vim.cmd [[au!]]
 time([[Defining lazy-load event autocommands]], true)
 vim.cmd [[au BufWritePre * ++once lua require("packer.load")({'formatter.nvim'}, { event = "BufWritePre *" }, _G.packer_plugins)]]
 vim.cmd [[au CmdlineEnter * ++once lua require("packer.load")({'mkdir.nvim'}, { event = "CmdlineEnter *" }, _G.packer_plugins)]]
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'nvim-lspconfig'}, { event = "BufRead *" }, _G.packer_plugins)]]
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'nvim-treesitter', 'nvim-lspconfig'}, { event = "BufRead *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end

@@ -234,6 +234,29 @@ require("packer").startup(
                 require("_lspconfig")
             end
         }
+        use {
+            "nvim-treesitter/nvim-treesitter",
+            event = "BufRead", -- this one causes slowness for telescope on new buff load
+            run = ":TSUpdate",
+            config = function()
+                require("nvim-treesitter.configs").setup {
+                    ensure_installed = {
+                        "lua",
+                        "python",
+                        "c",
+                        "bash",
+                        "javascript",
+                        "typescript",
+                        "tsx",
+                        "html",
+                        "css",
+                        "json"
+                    },
+                    highlight = {enable = true, use_languagetree = true},
+                    indent = {enable = true}
+                }
+            end
+        }
     end
 )
 
@@ -267,3 +290,6 @@ end
 
 -- packer operations are slow
 -- enabling lua plugins causes increased startuptime in first screen update
+-- fix global vim warning for lsp
+-- warning hide when in insert mode??? nvim bug?
+-- add comp and snip support
