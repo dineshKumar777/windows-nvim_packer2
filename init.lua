@@ -115,6 +115,7 @@ require("packer").startup(
                 "catppuccin/nvim",
                 as = "catppuccin",
                 config = function()
+                    require("_catppuccin")
                     vim.cmd [[colorscheme catppuccin]]
                 end
             }
