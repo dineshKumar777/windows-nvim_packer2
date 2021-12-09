@@ -7,8 +7,8 @@ catppuccin.setup(
         term_colors = false,
         styles = {
             comments = "italic",
-            functions = "italic",
-            keywords = "italic",
+            functions = "NONE",
+            keywords = "NONE",
             strings = "NONE",
             variables = "NONE"
         },

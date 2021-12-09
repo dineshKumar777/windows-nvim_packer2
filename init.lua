@@ -1,22 +1,3 @@
-vim.g.loaded_gzip = 1
-vim.g.loaded_tar = 1
-vim.g.loaded_tarPlugin = 1
-vim.g.loaded_zip = 1
-vim.g.loaded_zipPlugin = 1
-vim.g.loaded_getscript = 1
-vim.g.loaded_getscriptPlugin = 1
-vim.g.loaded_vimball = 1
-vim.g.loaded_vimballPlugin = 1
-vim.g.loaded_matchit = 1
-vim.g.loaded_matchparen = 1
-vim.g.loaded_2html_plugin = 1
-vim.g.loaded_logiPat = 1
-vim.g.loaded_rrhelper = 1
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-vim.g.loaded_netrwSettings = 1
-vim.g.loaded_netrwFileHandlers = 1
-
 --https://gitee.com/sternelee/neovim-nvim/blob/master/init.lua
 
 --
@@ -29,6 +10,24 @@ local scopes = {
     b = vim.bo,
     w = vim.wo
 }
+g.loaded_gzip = 1
+g.loaded_tar = 1
+g.loaded_tarPlugin = 1
+g.loaded_zip = 1
+g.loaded_zipPlugin = 1
+g.loaded_getscript = 1
+g.loaded_getscriptPlugin = 1
+g.loaded_vimball = 1
+g.loaded_vimballPlugin = 1
+g.loaded_matchit = 1
+g.loaded_matchparen = 1
+g.loaded_2html_plugin = 1
+g.loaded_logiPat = 1
+g.loaded_rrhelper = 1
+g.loaded_netrw = 1
+g.loaded_netrwPlugin = 1
+g.loaded_netrwSettings = 1
+g.loaded_netrwFileHandlers = 1
 
 local function opt(scope, key, value)
     scopes[scope][key] = value
@@ -54,7 +53,7 @@ opt("o", "splitbelow", true) -- Put new windows below current
 opt("o", "splitright", true) -- Put new windows right of current
 opt("o", "termguicolors", true) -- True color support
 opt("o", "wildmode", "list:longest") -- Command-line completion mode
---opt("o", "clipboard", "unnamed")
+-- opt("o", "clipboard", "unnamed")
 opt("o", "pumblend", 25)
 opt("o", "scrolloff", 2)
 opt("o", "swapfile", false)
@@ -204,6 +203,16 @@ require("packer").startup(
             end
         }
         use {
+            "lewis6991/gitsigns.nvim",
+            event = "BufReadPre",
+            requires = {
+                "nvim-lua/plenary.nvim"
+            },
+            config = function()
+                require("gitsigns").setup()
+            end
+        }
+        use {
             "numToStr/Comment.nvim",
             keys = "g",
             config = function()
@@ -258,6 +267,22 @@ require("packer").startup(
                 }
             end
         }
+
+        -- Snippet and autocompletions
+        use {
+            "L3MON4D3/LuaSnip",
+            event = "InsertEnter",
+            config = function()
+                vim.cmd(
+                    [[
+                        snoremap <silent> <C-h> <cmd>lua require('luasnip').jump(1)<CR>
+                        imap <silent><expr> <C-h> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<c-h>'
+                        snoremap <silent> <C-l> <cmd>lua require('luasnip').jump(-1)<CR>
+                        inoremap <silent> <C-l> <cmd>lua require('luasnip').jump(-1)<CR>
+                        ]]
+                )
+            end
+        }
     end
 )
 
@@ -274,6 +299,11 @@ augroup packer_user_config
 autocmd!
 autocmd BufWritePost init.lua source <afile> | PackerCompile profile=true
 augroup end
+
+set shell=pwsh
+set shellcmdflag=-command
+set shellquote=\"
+set shellxquote=
 ]]
 )
 
@@ -282,7 +312,7 @@ vim.g.did_load_filetypes = 1 -- disable default filetype
 if g.neovide == true then
     -- opt("o", "guifont", "Envy Code R,FiraCode NF:h12")
     -- g.neovide_fullscreen = true
-    opt("o", "guifont", "Hack NF,FiraCode NF:h10")
+    opt("o", "guifont", "Hack NF,FiraCode NF:h18")
     -- opt("o", "guifont", "Fira Code,FiraCode NF:h10")
     -- opt("o", "guifont", "Operator Mono,FiraCode NF:h11")
     -- g.neovide_cursor_vfx_mode = "sonicboom"
@@ -290,7 +320,8 @@ if g.neovide == true then
 end
 
 -- packer operations are slow
--- enabling lua plugins causes increased startuptime in first screen update
+-- cliboard still consumes. Find better solution
+-- enabling lualine causes increased startuptime in first screen update
 -- fix global vim warning for lsp
--- warning hide when in insert mode??? nvim bug?
+-- lint warning hide when in insert mode??? nvim bug?
 -- add comp and snip support
