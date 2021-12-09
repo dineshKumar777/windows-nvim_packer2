@@ -80,10 +80,8 @@ _G.packer_plugins = {
   },
   LuaSnip = {
     config = { "\27LJ\2\n¡\3\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0°\3                        snoremap <silent> <C-h> <cmd>lua require('luasnip').jump(1)<CR>\n                        imap <silent><expr> <C-h> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<c-h>'\n                        snoremap <silent> <C-l> <cmd>lua require('luasnip').jump(-1)<CR>\n                        inoremap <silent> <C-l> <cmd>lua require('luasnip').jump(-1)<CR>\n                        \bcmd\bvim\0" },
-    loaded = false,
-    needs_bufread = false,
-    only_cond = false,
-    path = "C:\\Users\\vdinesh\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\LuaSnip",
+    loaded = true,
+    path = "C:\\Users\\vdinesh\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
   catppuccin = {
@@ -101,6 +99,52 @@ _G.packer_plugins = {
     path = "C:\\Users\\vdinesh\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\clever-f.vim",
     url = "https://github.com/rhysd/clever-f.vim"
   },
+  ["cmp-buffer"] = {
+    after_files = { "C:\\Users\\vdinesh\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\cmp-buffer\\after\\plugin\\cmp_buffer.lua" },
+    load_after = {},
+    loaded = true,
+    needs_bufread = false,
+    path = "C:\\Users\\vdinesh\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\cmp-buffer",
+    url = "https://github.com/hrsh7th/cmp-buffer"
+  },
+  ["cmp-cmdline"] = {
+    after_files = { "C:\\Users\\vdinesh\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\cmp-cmdline\\after\\plugin\\cmp_cmdline.lua" },
+    load_after = {},
+    loaded = true,
+    needs_bufread = false,
+    path = "C:\\Users\\vdinesh\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\cmp-cmdline",
+    url = "https://github.com/hrsh7th/cmp-cmdline"
+  },
+  ["cmp-nvim-lsp"] = {
+    config = { "\27LJ\2\n:\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\vconfig\16_completion\frequire\0" },
+    loaded = true,
+    path = "C:\\Users\\vdinesh\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\cmp-nvim-lsp",
+    url = "https://github.com/hrsh7th/cmp-nvim-lsp"
+  },
+  ["cmp-nvim-lua"] = {
+    after_files = { "C:\\Users\\vdinesh\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\cmp-nvim-lua\\after\\plugin\\cmp_nvim_lua.lua" },
+    load_after = {},
+    loaded = true,
+    needs_bufread = false,
+    path = "C:\\Users\\vdinesh\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\cmp-nvim-lua",
+    url = "https://github.com/hrsh7th/cmp-nvim-lua"
+  },
+  ["cmp-path"] = {
+    after_files = { "C:\\Users\\vdinesh\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\cmp-path\\after\\plugin\\cmp_path.lua" },
+    load_after = {},
+    loaded = true,
+    needs_bufread = false,
+    path = "C:\\Users\\vdinesh\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\cmp-path",
+    url = "https://github.com/hrsh7th/cmp-path"
+  },
+  cmp_luasnip = {
+    after_files = { "C:\\Users\\vdinesh\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\cmp_luasnip\\after\\plugin\\cmp_luasnip.lua" },
+    load_after = {},
+    loaded = true,
+    needs_bufread = false,
+    path = "C:\\Users\\vdinesh\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\cmp_luasnip",
+    url = "https://github.com/saadparwaiz1/cmp_luasnip"
+  },
   ["filetype.nvim"] = {
     loaded = true,
     path = "C:\\Users\\vdinesh\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\filetype.nvim",
@@ -114,6 +158,11 @@ _G.packer_plugins = {
     path = "C:\\Users\\vdinesh\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\formatter.nvim",
     url = "https://github.com/mhartington/formatter.nvim"
   },
+  ["friendly-snippets"] = {
+    loaded = true,
+    path = "C:\\Users\\vdinesh\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\friendly-snippets",
+    url = "https://github.com/rafamadriz/friendly-snippets"
+  },
   ["gitsigns.nvim"] = {
     config = { "\27LJ\2\n6\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\rgitsigns\frequire\0" },
     loaded = false,
@@ -123,13 +172,18 @@ _G.packer_plugins = {
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
   ["hop.nvim"] = {
-    config = { "\27LJ\2\nâ\3\0\0\b\0\17\00046\0\0\0009\0\1\0009\0\2\0005\1\3\0\18\2\0\0'\4\4\0'\5\5\0'\6\6\0005\a\a\0B\2\5\1\18\2\0\0'\4\4\0'\5\b\0'\6\t\0\18\a\1\0B\2\5\1\18\2\0\0'\4\n\0'\5\b\0'\6\t\0\18\a\1\0B\2\5\1\18\2\0\0'\4\v\0'\5\b\0'\6\t\0\18\a\1\0B\2\5\1\18\2\0\0'\4\4\0'\5\f\0'\6\r\0\18\a\1\0B\2\5\1\18\2\0\0'\4\n\0'\5\f\0'\6\r\0\18\a\1\0B\2\5\1\18\2\0\0'\4\v\0'\5\f\0'\6\r\0\18\a\1\0B\2\5\0016\2\14\0'\4\15\0B\2\2\0029\2\16\2B\2\1\1K\0\1\0\nsetup\bhop\frequire+<cmd>lua require'hop'.hint_lines()<cr>\asl\6o\6x+<cmd>lua require'hop'.hint_words()<cr>\asw\1\0\1\fnoremap\1\n<Nop>\6s\6n\1\0\3\texpr\1\fnoremap\2\vsilent\1\20nvim_set_keymap\bapi\bvim\0" },
+    config = { "\27LJ\2\nâ\3\0\0\b\0\17\00046\0\0\0009\0\1\0009\0\2\0005\1\3\0\18\2\0\0'\4\4\0'\5\5\0'\6\6\0005\a\a\0B\2\5\1\18\2\0\0'\4\4\0'\5\b\0'\6\t\0\18\a\1\0B\2\5\1\18\2\0\0'\4\n\0'\5\b\0'\6\t\0\18\a\1\0B\2\5\1\18\2\0\0'\4\v\0'\5\b\0'\6\t\0\18\a\1\0B\2\5\1\18\2\0\0'\4\4\0'\5\f\0'\6\r\0\18\a\1\0B\2\5\1\18\2\0\0'\4\n\0'\5\f\0'\6\r\0\18\a\1\0B\2\5\1\18\2\0\0'\4\v\0'\5\f\0'\6\r\0\18\a\1\0B\2\5\0016\2\14\0'\4\15\0B\2\2\0029\2\16\2B\2\1\1K\0\1\0\nsetup\bhop\frequire+<cmd>lua require'hop'.hint_lines()<cr>\asl\6o\6x+<cmd>lua require'hop'.hint_words()<cr>\asw\1\0\1\fnoremap\1\n<Nop>\6s\6n\1\0\3\fnoremap\2\texpr\1\vsilent\1\20nvim_set_keymap\bapi\bvim\0" },
     keys = { { "", "s" } },
     loaded = false,
     needs_bufread = false,
     only_cond = false,
     path = "C:\\Users\\vdinesh\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\hop.nvim",
     url = "https://github.com/phaazon/hop.nvim"
+  },
+  ["lspkind-nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\vdinesh\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\lspkind-nvim",
+    url = "https://github.com/onsails/lspkind-nvim"
   },
   ["mkdir.nvim"] = {
     config = { "\27LJ\2\n%\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\nmkdir\frequire\0" },
@@ -138,6 +192,17 @@ _G.packer_plugins = {
     only_cond = false,
     path = "C:\\Users\\vdinesh\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\mkdir.nvim",
     url = "https://github.com/jghauser/mkdir.nvim"
+  },
+  ["nvim-autopairs"] = {
+    config = { "\27LJ\2\nµ\2\0\0\n\0\15\0\0256\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\0016\0\0\0'\2\6\0B\0\2\0026\1\0\0'\3\a\0B\1\2\0029\2\b\1\18\4\2\0009\2\t\2'\5\n\0009\6\v\0005\b\r\0005\t\f\0=\t\14\bB\6\2\0A\2\2\1K\0\1\0\rmap_char\1\0\0\1\0\1\btex\5\20on_confirm_done\17confirm_done\aon\nevent\bcmp\"nvim-autopairs.completion.cmp\21disable_filetype\1\3\0\0\20TelescopePrompt\bvim\1\0\2\30enable_check_bracket_line\1\rcheck_ts\2\nsetup\19nvim-autopairs\frequire\0" },
+    loaded = true,
+    path = "C:\\Users\\vdinesh\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-autopairs",
+    url = "https://github.com/windwp/nvim-autopairs"
+  },
+  ["nvim-cmp"] = {
+    loaded = true,
+    path = "C:\\Users\\vdinesh\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-cmp",
+    url = "https://github.com/hrsh7th/nvim-cmp"
   },
   ["nvim-lsp-installer"] = {
     loaded = true,
@@ -202,18 +267,39 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: cmp-nvim-lsp
+time([[Config for cmp-nvim-lsp]], true)
+try_loadstring("\27LJ\2\n:\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\vconfig\16_completion\frequire\0", "config", "cmp-nvim-lsp")
+time([[Config for cmp-nvim-lsp]], false)
 -- Config for: catppuccin
 time([[Config for catppuccin]], true)
 try_loadstring("\27LJ\2\nZ\0\0\3\0\5\0\b6\0\0\0'\2\1\0B\0\2\0016\0\2\0009\0\3\0'\2\4\0B\0\2\1K\0\1\0\27colorscheme catppuccin\bcmd\bvim\16_catppuccin\frequire\0", "config", "catppuccin")
 time([[Config for catppuccin]], false)
+-- Config for: nvim-autopairs
+time([[Config for nvim-autopairs]], true)
+try_loadstring("\27LJ\2\nµ\2\0\0\n\0\15\0\0256\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\0016\0\0\0'\2\6\0B\0\2\0026\1\0\0'\3\a\0B\1\2\0029\2\b\1\18\4\2\0009\2\t\2'\5\n\0009\6\v\0005\b\r\0005\t\f\0=\t\14\bB\6\2\0A\2\2\1K\0\1\0\rmap_char\1\0\0\1\0\1\btex\5\20on_confirm_done\17confirm_done\aon\nevent\bcmp\"nvim-autopairs.completion.cmp\21disable_filetype\1\3\0\0\20TelescopePrompt\bvim\1\0\2\30enable_check_bracket_line\1\rcheck_ts\2\nsetup\19nvim-autopairs\frequire\0", "config", "nvim-autopairs")
+time([[Config for nvim-autopairs]], false)
+-- Config for: LuaSnip
+time([[Config for LuaSnip]], true)
+try_loadstring("\27LJ\2\n¡\3\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0°\3                        snoremap <silent> <C-h> <cmd>lua require('luasnip').jump(1)<CR>\n                        imap <silent><expr> <C-h> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<c-h>'\n                        snoremap <silent> <C-l> <cmd>lua require('luasnip').jump(-1)<CR>\n                        inoremap <silent> <C-l> <cmd>lua require('luasnip').jump(-1)<CR>\n                        \bcmd\bvim\0", "config", "LuaSnip")
+time([[Config for LuaSnip]], false)
+-- Load plugins in order defined by `after`
+time([[Sequenced loading]], true)
+vim.cmd [[ packadd nvim-cmp ]]
+vim.cmd [[ packadd cmp-buffer ]]
+vim.cmd [[ packadd cmp-nvim-lua ]]
+vim.cmd [[ packadd cmp-cmdline ]]
+vim.cmd [[ packadd cmp_luasnip ]]
+vim.cmd [[ packadd cmp-path ]]
+time([[Sequenced loading]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
+pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file ToggleTerm lua require("packer.load")({'toggleterm.nvim'}, { cmd = "ToggleTerm", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file ToggleTermOpenAll lua require("packer.load")({'toggleterm.nvim'}, { cmd = "ToggleTermOpenAll", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file NvimTreeToggle lua require("packer.load")({'nvim-tree.lua'}, { cmd = "NvimTreeToggle", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file NvimTreeFocus lua require("packer.load")({'nvim-tree.lua'}, { cmd = "NvimTreeFocus", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file ToggleTermCloseAll lua require("packer.load")({'toggleterm.nvim'}, { cmd = "ToggleTermCloseAll", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
-pcall(vim.cmd, [[command -nargs=* -range -bang -complete=file ToggleTerm lua require("packer.load")({'toggleterm.nvim'}, { cmd = "ToggleTerm", l1 = <line1>, l2 = <line2>, bang = <q-bang>, args = <q-args>, mods = "<mods>" }, _G.packer_plugins)]])
 time([[Defining lazy-load commands]], false)
 
 -- Keymap lazy-loads
@@ -228,11 +314,10 @@ vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au BufReadPre * ++once lua require("packer.load")({'gitsigns.nvim'}, { event = "BufReadPre *" }, _G.packer_plugins)]]
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'nvim-lspconfig', 'nvim-treesitter'}, { event = "BufRead *" }, _G.packer_plugins)]]
-vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'LuaSnip'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
 vim.cmd [[au BufWritePre * ++once lua require("packer.load")({'formatter.nvim'}, { event = "BufWritePre *" }, _G.packer_plugins)]]
 vim.cmd [[au CmdlineEnter * ++once lua require("packer.load")({'mkdir.nvim'}, { event = "CmdlineEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'nvim-lspconfig', 'nvim-treesitter'}, { event = "BufRead *" }, _G.packer_plugins)]]
+vim.cmd [[au BufReadPre * ++once lua require("packer.load")({'gitsigns.nvim'}, { event = "BufReadPre *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end

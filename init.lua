@@ -271,7 +271,7 @@ require("packer").startup(
         -- Snippet and autocompletions
         use {
             "L3MON4D3/LuaSnip",
-            event = "InsertEnter",
+            -- event = "InsertEnter",
             config = function()
                 vim.cmd(
                     [[
@@ -283,6 +283,55 @@ require("packer").startup(
                 )
             end
         }
+        use(
+            {
+                "hrsh7th/nvim-cmp",
+                -- event = "InsertEnter",
+                -- after = "LuaSnip",
+                -- wants = "LuaSnip",
+                requires = {
+                    {"rafamadriz/friendly-snippets"},
+                    {"onsails/lspkind-nvim"},
+                    {"L3MON4D3/LuaSnip"}
+                }
+            }
+        )
+
+        -- Sources for autocompletion
+        use({"hrsh7th/cmp-path", requires = "hrsh7th/nvim-cmp", after = "nvim-cmp"})
+        use({"hrsh7th/cmp-buffer", requires = "hrsh7th/nvim-cmp", after = "nvim-cmp"})
+        use({"hrsh7th/cmp-cmdline", requires = "hrsh7th/nvim-cmp", after = "nvim-cmp"})
+        use({"hrsh7th/cmp-nvim-lua", requires = "hrsh7th/nvim-cmp", after = "nvim-cmp"})
+        use({"saadparwaiz1/cmp_luasnip", requires = "hrsh7th/nvim-cmp", after = "nvim-cmp"})
+        use(
+            {
+                "hrsh7th/cmp-nvim-lsp",
+                requires = "hrsh7th/nvim-cmp",
+                -- after = "cmp_luasnip",
+                config = function()
+                    require("_completion").config()
+                end
+            }
+        )
+        use(
+            {
+                "windwp/nvim-autopairs",
+                requires = "hrsh7th/nvim-cmp",
+                -- after = "nvim-cmp",
+                config = function()
+                    require("nvim-autopairs").setup {
+                        check_ts = true,
+                        enable_check_bracket_line = false,
+                        disable_filetype = {"TelescopePrompt", "vim"}
+                    }
+
+                    -- cmp and autopairs integration
+                    local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+                    local cmp = require("cmp")
+                    cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({map_char = {tex = ""}}))
+                end
+            }
+        )
     end
 )
 
@@ -319,9 +368,11 @@ if g.neovide == true then
     g.neovide_cursor_vfx_mode = "pixiedust"
 end
 
--- packer operations are slow
--- cliboard still consumes. Find better solution
--- enabling lualine causes increased startuptime in first screen update
+-- Add gitignore and remove packer_compiled from committing
+-- packer operations are slow. Create a bug if needed
+-- cliboard still consumes more startup time. Find better solution
+-- enabling lualine causes increased startuptime in first screen update. Disabled it for now. analyze
 -- fix global vim warning for lsp
 -- lint warning hide when in insert mode??? nvim bug?
--- add comp and snip support
+-- Removed InsertEnter event for luasnip and cmp. Bcoz this causes slowness with telescope which have default insert mode. Find way to lazy load
+-- move cmp commandline as seperate and lazy load
