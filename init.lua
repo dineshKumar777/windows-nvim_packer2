@@ -246,7 +246,7 @@ require("packer").startup(
         }
         use {
             "nvim-treesitter/nvim-treesitter",
-            event = "BufRead", -- this one causes slowness for telescope on new buff load
+            event = "BufRead",
             run = ":TSUpdate",
             config = function()
                 require("nvim-treesitter.configs").setup {
