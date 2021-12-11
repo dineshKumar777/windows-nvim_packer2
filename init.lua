@@ -96,14 +96,15 @@ map("n", "<leader><leader>", "<cmd>b#<CR>")
 map("n", "<leader>p", "m`o<ESC>p``")
 map("n", "<leader>P", "m`O<ESC>p``")
 
-local fn = vim.fn
-local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-if fn.empty(fn.glob(install_path)) > 0 then
-    packer_bootstrap =
-        fn.system({"git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path})
-end
+-- local fn = vim.fn
+-- local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+-- if fn.empty(fn.glob(install_path)) > 0 then
+--     packer_bootstrap =
+--         fn.system({"git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path})
+-- end
 
 require("packer").startup(
+    -- function(use)
     function(use)
         use {
             "wbthomason/packer.nvim"
@@ -132,6 +133,7 @@ require("packer").startup(
         use {
             "kyazdani42/nvim-web-devicons"
         }
+
         -- lualine is adding more sourcing time to first screen update
         -- use {
         --     "nvim-lualine/lualine.nvim",
@@ -241,7 +243,7 @@ require("packer").startup(
             -- event = {"BufRead", "InsertEnter", "CmdlineEnter"},
             event = "BufRead",
             config = function()
-                require("_lspconfig")
+                require("_lspconfig2")
             end
         }
         use {
@@ -349,19 +351,25 @@ autocmd!
 autocmd BufWritePost init.lua source <afile> | PackerCompile profile=true
 augroup end
 
-set shell=pwsh
-set shellcmdflag=-command
-set shellquote=\"
-set shellxquote=
+"has some cursor issues with toggleterm and normal terminal
+"Powershell in neovim is very slow at the momemnt. Its best to retun to cmd
+if has("win32") || has("win64")
+    " Make Powershell work :)
+    let &shell = "pwsh"
+    let &shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;'
+    let &shellredir = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
+    let &shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
+    set shellquote= shellxquote=
+endif
 ]]
 )
 
-vim.g.did_load_filetypes = 1 -- disable default filetype
+vim.g.did_load_filetypes = 1 -- disable default filetype and load custom filetype plugin
 
 if g.neovide == true then
     -- opt("o", "guifont", "Envy Code R,FiraCode NF:h12")
     -- g.neovide_fullscreen = true
-    opt("o", "guifont", "Hack NF,FiraCode NF:h18")
+    opt("o", "guifont", "Hack NF,FiraCode NF:h10")
     -- opt("o", "guifont", "Fira Code,FiraCode NF:h10")
     -- opt("o", "guifont", "Operator Mono,FiraCode NF:h11")
     -- g.neovide_cursor_vfx_mode = "sonicboom"
@@ -372,7 +380,7 @@ end
 -- packer operations are slow. Create a bug if needed
 -- cliboard still consumes more startup time. Find better solution
 -- enabling lualine causes increased startuptime in first screen update. Disabled it for now. analyze
--- fix global vim warning for lsp
 -- lint warning hide when in insert mode??? nvim bug?
 -- Removed InsertEnter event for luasnip and cmp. Bcoz this causes slowness with telescope which have default insert mode. Find way to lazy load
--- move cmp commandline as seperate and lazy load
+-- move cmp commandline as seperate and lazy load that plugin
+-- also disbale text completion in comments

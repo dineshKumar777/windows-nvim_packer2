@@ -3,7 +3,6 @@ local status_ok2, luasnip = pcall(require, "luasnip")
 if not (status_ok1 or status_ok2) then
     return
 end
--- local lspkind = require("lspkind")
 
 local kind_icons = {
     Text = "",
@@ -56,12 +55,6 @@ M.config = function()
                 end
             },
             formatting = {
-                -- format = lspkind.cmp_format(
-                --     {
-                --         with_text = true,
-                --         maxwidth = 50
-                --     }
-                -- )
                 format = function(entry, vim_item)
                     vim_item.kind = string.format("%s %s", get_kind(vim_item.kind), vim_item.kind)
                     vim_item.menu =
