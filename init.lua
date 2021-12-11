@@ -110,26 +110,14 @@ require("packer").startup(
             "wbthomason/packer.nvim"
         }
         use "nathom/filetype.nvim"
-        use(
-            {
-                "catppuccin/nvim",
-                as = "catppuccin",
-                config = function()
-                    require("_catppuccin")
-                    vim.cmd [[colorscheme catppuccin]]
-                end
-            }
-        )
-        -- use {
-        --     "lifepillar/vim-gruvbox8",
-        --     config = function()
-        --         vim.g.gruvbox_italics = 1
-        --         vim.g.gruvbox_italicize_strings = 1
-        --         vim.g.gruvbox_filetype_hi_groups = 0
-        --         vim.g.gruvbox_plugin_hi_groups = 1
-        --         vim.cmd [[colorscheme gruvbox8_soft]]
-        --     end
-        -- }
+        use {
+            "catppuccin/nvim",
+            as = "catppuccin",
+            config = function()
+                require("_catppuccin")
+                vim.cmd [[colorscheme catppuccin]]
+            end
+        }
         use {
             "kyazdani42/nvim-web-devicons"
         }
@@ -240,7 +228,6 @@ require("packer").startup(
         }
         use {
             "neovim/nvim-lspconfig",
-            -- event = {"BufRead", "InsertEnter", "CmdlineEnter"},
             event = "BufRead",
             config = function()
                 require("_lspconfig2")
@@ -372,7 +359,6 @@ if g.neovide == true then
     opt("o", "guifont", "Hack NF,FiraCode NF:h10")
     -- opt("o", "guifont", "Fira Code,FiraCode NF:h10")
     -- opt("o", "guifont", "Operator Mono,FiraCode NF:h11")
-    -- g.neovide_cursor_vfx_mode = "sonicboom"
     g.neovide_cursor_vfx_mode = "pixiedust"
 end
 
