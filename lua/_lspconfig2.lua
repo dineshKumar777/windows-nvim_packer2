@@ -14,7 +14,7 @@ for type, icon in pairs(signs) do
     vim.fn.sign_define(hl, {text = icon, texthl = hl, numhl = hl})
 end
 
--- local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local on_attach = function(client, bufnr)
     local function buf_set_keymap(...)
@@ -51,7 +51,7 @@ require("nvim-lsp-installer").on_server_ready(
     function(server)
         local default_opts = {
             on_attach = on_attach,
-            -- capabilities = capabilities,
+            capabilities = capabilities,
             flags = {
                 debounce_text_changes = 300
             }

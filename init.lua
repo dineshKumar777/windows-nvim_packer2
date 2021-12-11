@@ -52,7 +52,7 @@ opt("o", "ignorecase", true) -- Don't ignore case with capitals
 opt("o", "splitbelow", true) -- Put new windows below current
 opt("o", "splitright", true) -- Put new windows right of current
 opt("o", "termguicolors", true) -- True color support
-opt("o", "wildmode", "list:longest") -- Command-line completion mode
+-- opt("o", "wildmode", "list:longest") -- Command-line completion mode
 -- opt("o", "clipboard", "unnamed")
 opt("o", "pumblend", 25)
 opt("o", "scrolloff", 2)
@@ -360,6 +360,7 @@ if g.neovide == true then
     -- opt("o", "guifont", "Fira Code,FiraCode NF:h10")
     -- opt("o", "guifont", "Operator Mono,FiraCode NF:h11")
     g.neovide_cursor_vfx_mode = "pixiedust"
+    g.neovide_cursor_vfx_particle_density = 25
 end
 
 -- Add gitignore and remove packer_compiled from committing
@@ -370,3 +371,4 @@ end
 -- Removed InsertEnter event for luasnip and cmp. Bcoz this causes slowness with telescope which have default insert mode. Find way to lazy load
 -- move cmp commandline as seperate and lazy load that plugin
 -- also disbale text completion in comments
+-- Cmp is freezing up typing sometimes
