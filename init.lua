@@ -53,7 +53,7 @@ opt("o", "splitbelow", true) -- Put new windows below current
 opt("o", "splitright", true) -- Put new windows right of current
 opt("o", "termguicolors", true) -- True color support
 -- opt("o", "wildmode", "list:longest") -- Command-line completion mode
--- opt("o", "clipboard", "unnamed")
+-- opt("o", "clipboard", "unnamed") --either use clipboard by command line or use "+ operation to use system preference
 opt("o", "pumblend", 25)
 opt("o", "scrolloff", 2)
 opt("o", "swapfile", false)
@@ -356,9 +356,7 @@ if g.neovide == true then
     g.neovide_cursor_vfx_particle_density = 25
 end
 
--- Add gitignore and remove packer_compiled from committing
 -- packer operations are slow. Create a bug if needed
--- cliboard still consumes more startup time. Find better solution
 -- enabling lualine causes increased startuptime in first screen update. Disabled it for now. analyze
 -- lint warning hide when in insert mode??? nvim bug?
 -- Removed InsertEnter event for luasnip and cmp. Bcoz this causes slowness with telescope which have default insert mode. Find way to lazy load
